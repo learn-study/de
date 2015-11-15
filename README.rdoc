@@ -27,14 +27,3 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
-<h1>geocorderサンプル</h1>
-<a href="https://github.com/alexreisner/geocoder">https://github.com/alexreisner/geocoder</a>
-
-<pre>gem 'geocorder'</pre>
-
-bundle install
-
-<h2>モデルの作成</h2>
-rails g model Userlocation address:string latitude:float longitude:float
-
-<pre>rake db:migrate</pre>
