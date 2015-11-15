@@ -1,0 +1,45 @@
+<h1>Userlocations#index</h1>
+<p>Find me in app/views/userlocations/index.html.erb</p>
+
+
+<%= form_for Userlocation.new do |f| %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
+    <%= f.submit '現在地' %>
+<% end %>
+    
+<%= form_for Userlocation.new do |f| %>
+    <%= f.text_field :address %>
+    <%= f.submit '現在地' %>
+<% end %>
+
+   <% @locations.each do |location| %>
+    <%= location.id %>    <%= location.latitude %>
+    <%= location.longitude %> <%= location.address %>
+    <br>
+   <% end %>
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var options = {
+        enableHighAccuracy: true,
+        timeout: 60000,
+        maximumAge: 0
+    };
+    window.navigator.geolocation.getCurrentPosition(success, error, options);
+}, false);
+
+function success(pos) {
+    document.getElementById('userlocation_latitude').value = pos.coords.latitude;
+    document.getElementById('userlocation_longitude').value = pos.coords.longitude;
+}
+
+function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+}
+</script>

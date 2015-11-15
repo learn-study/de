@@ -1,0 +1,40 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+
+<h1>geocorderサンプル</h1>
+<a href="https://github.com/alexreisner/geocoder">https://github.com/alexreisner/geocoder</a>
+
+<pre>gem 'geocorder'</pre>
+
+bundle install
+
+<h2>モデルの作成</h2>
+rails g model Userlocation address:string latitude:float longitude:float
+
+<pre>rake db:migrate</pre>
