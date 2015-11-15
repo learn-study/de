@@ -4,9 +4,16 @@ class UserlocationsController < ApplicationController
   end
   
   def create
-    @locations = Userlocation.new(location)
-    @locations.save
-    redirect_to root_path
+    @location = Userlocation.new(location)
+    if @location.address.present?
+      @location.save
+    elsif @location.latitude.present?
+      @location.save
+    else
+      @location = "現在地が取得できませんでした。"
+    end
+    @locations = Userlocation.all
+    render "index"
   end
   
   private
