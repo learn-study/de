@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>人恋キャスト一覧</h2>
+  </div>
+<% if admin_signed_in? %>
+    <button class="btn btn-success" style="margin:10px 0 0 10px"><%= link_to "新人登録", new_cast_path,style: "color:#fff" %></button>
+<% end %>
+  <div class="panel-body">
+    <div class="row">
+    <% @casts.each do |cast| %>
+      <div class="col-xs-6 col-md-3">
+        <div class="thumbnail">
+          <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRPXwGOQg3gLHCnLUKY9mrg_7F4LRyOKJu6PYo77gsdkCNS5duk8g">
+          <h3><%= cast.name %><small>(<%= cast.age %>)</small></h3>
+          <p>T<%= cast.tall %>&nbsp;B<%= cast.b %>(<%= cast.cup %>)W<%= cast.w %>H<%= cast.hip %></p>
+          <p></p>
+
+        (<%= link_to "編集" , edit_cast_path(cast) %>
+         <%= link_to "退店" , "#" %>
+         <%= link_to "削除" , cast , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+        )
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

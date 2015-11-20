@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gps</title>
+  <title>人恋</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+<header>
+  <div class="header_banner"><h1>人妻いけない恋心&lt;header&gt;</h1></div>
+  <nav>
+    <ul>
+      <li><%= link_to "TOP",home_path %></li>
+      <li><%= link_to "システム",system_path %></li>
+      <li><%= link_to "人恋キャスト",casts_path %> </li>
+      <li>スケジュール</li>
+      <li><%= link_to "ホテルガイド",hotelguide_path %></li>
+      <li>イベント</li>
+      <li>求人</li>
+      <li>メルマガ</li>
+    </ul>
+  </nav>
+</header>
+      <% if admin_signed_in? %>
+      <%= link_to "Logout",destroy_admin_session_path,method: :delete %>
+      <%end %>
+
+    <% if notice %>
+      <div class="alert alert-info">
+        <%= notice %>
+      </div>
+    <% end %>
+
+      <%= link_to "Log in",new_admin_session_path unless admin_signed_in? %>
 
 <%= yield %>
 
+  </div>
 </body>
 </html>

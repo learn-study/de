@@ -1,49 +1,23 @@
-<h1>Userlocations#index</h1>
-<p>Find me in app/views/userlocations/index.html.erb</p>
-
-<h2>Get Location</h2>
-<%= form_for Userlocation.new do |f| %>
-    <%= f.hidden_field :latitude %>
-    <%= f.hidden_field :longitude %>
-    <%= f.submit '現在地' %>
+<h1>ホテル・待ち合わせガイド</h1>
+<% if admin_signed_in? %>
+<h2>新規登録</h2>
+<%= render 'form' %>
+  <% if @location.latitude.present? %>
+    <%= image_tag("http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}") %>
+  <% end %>
 <% end %>
-    
-<h2>Input Your Place or Adress</h2>
-<%= form_for Userlocation.new do |f| %>
-    <%= f.text_field :address %>
-    <%= f.submit '現在地' %>
-<% end %>
-
-<% if @location.present? %>
-<%= image_tag("http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}") %>
-<% end %>
-
-<h2>History</h2>
-   <% @locations.each do |location| %>
-    <%= location.id %>    <%= location.latitude %>
-    <%= location.longitude %> <%= location.address %>
+  <% @locations.each do |location| %>
+  <% if location.location_type == "hotel" %>
+  <i class="fa fa-building-o fa-lg bluecage"></i>
+  <% else %>
+  <i class="fa fa-female fa-lg redcage"></i>
+  <% end %>
+  
+  <%= location.location_name %><br><%= location.address %>
+      <% if admin_signed_in? %>
+        (<%= link_to "編集",edit_userlocation_path(location) %>)
+        (<%= link_to "削除",location, method: :delete, 
+                  data: { confirm: '削除してもよろしいですか？' } %>)
+      <% end %>
     <br>
-   <% end %>
-
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    var options = {
-        enableHighAccuracy: true,
-        timeout: 60000,
-        maximumAge: 0
-    };
-    window.navigator.geolocation.getCurrentPosition(success, error, options);
-}, false);
-
-function success(pos) {
-    document.getElementById('userlocation_latitude').value = pos.coords.latitude;
-    document.getElementById('userlocation_longitude').value = pos.coords.longitude;
-}
-
-function error(err) {
-    console.warn('ERROR(' + err.code + '): ' + err.message);
-}
-</script>
+  <% end %>

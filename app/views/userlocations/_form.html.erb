@@ -1,0 +1,26 @@
+<%= form_for @location,html: {:class => 'form-horizontal'} do |f| %>
+    <div class="form-group">
+        <label class="col-xs-2 control-label">種別</label>
+        <div class="col-xs-10">
+　　    <%= f.select :location_type, {"ホテル" => "hotel", "待ち合わせ" => "rendezvous"}, {}, { class: "form-control" } %>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-2 control-label">登録名</label>
+        <div class="col-xs-10">
+        <%= f.text_field :location_name,  class: "form-control" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-2 control-label">住所</label>
+        <div class="col-xs-10">
+        <%= f.text_field :address,  class: "form-control" %>
+        </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit "登録",class: "btn btn-primary btn-block form-control" %>  
+      </div>
+    </div>
+<% end %>

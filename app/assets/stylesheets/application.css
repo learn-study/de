@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+body{font-family: メイリオ, Meiryo, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Verdana, Geneva, Arial, 'ＭＳ ゴシック', sans-serif;}
+header{display:block;}
+.bluecage{padding:7px;color:#fff;background-color:#08f;border:1px solid #000;}
+.redcage {padding:7px;color:#fff;background-color:#f08;border:1px solid #000;}
+.header_banner{width:100%;height:100px;}
+nav ul{width:100%;padding:0;}
+nav li{display:inline-block;width:49%;
+       border-bottom:1px solid #fff;
+       background:#08f;text-align:center;
+       padding:5px 0;color:#fff;list-style:none;}
+nav li a{text-decoration:none;color:#fff;}
+@media screen and (min-width: 768px) {
+    nav li{width:24.2%;}
+}
+
+@media screen and (min-width: 992px) {
+    nav li{width:12.1%;}
+}

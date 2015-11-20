@@ -4,7 +4,8 @@ class CreateUserlocations < ActiveRecord::Migration
       t.string :address
       t.float :latitude
       t.float :longitude
-
+      t.string :location_type
+      t.string :location_name
       t.timestamps null: false
     end
   end

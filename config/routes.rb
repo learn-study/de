@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'userlocations#index'
-  resources :userlocations
+  root 'static_pages#index'
+  match '/home',    to: 'static_pages#home',    via: 'get'
+  match '/system',    to: 'static_pages#system',    via: 'get'
+  match '/casts',    to: 'casts#index',    via: 'get'
+  match '/hotelguide',  to: 'userlocations#index',    via: 'get'
+  devise_for :admins
+  resources :userlocations, :casts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
