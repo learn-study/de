@@ -10,15 +10,17 @@
     <% @casts.each do |cast| %>
       <div class="col-xs-6 col-md-3">
         <div class="thumbnail">
-          <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRPXwGOQg3gLHCnLUKY9mrg_7F4LRyOKJu6PYo77gsdkCNS5duk8g">
+          <%= link_to image_tag('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRPXwGOQg3gLHCnLUKY9mrg_7F4LRyOKJu6PYo77gsdkCNS5duk8g'), cast %>
           <h3><%= cast.name %><small>(<%= cast.age %>)</small></h3>
           <p>T<%= cast.tall %>&nbsp;B<%= cast.b %>(<%= cast.cup %>)W<%= cast.w %>H<%= cast.hip %></p>
           <p></p>
 
+<% if admin_signed_in? %>
         (<%= link_to "編集" , edit_cast_path(cast) %>
          <%= link_to "退店" , "#" %>
          <%= link_to "削除" , cast , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
         )
+<% end %>
         </div>
       </div>
     <% end %>

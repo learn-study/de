@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120075631) do
+ActiveRecord::Schema.define(version: 20151120191410) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20151120075631) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "cast_id"
+    t.string   "pr_item"
+    t.string   "pr_body"
+    t.integer  "pr_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "profiles", ["cast_id"], name: "index_profiles_on_cast_id"
 
   create_table "userlocations", force: :cascade do |t|
     t.string   "address"

@@ -6,7 +6,16 @@ Rails.application.routes.draw do
   match '/casts',    to: 'casts#index',    via: 'get'
   match '/hotelguide',  to: 'userlocations#index',    via: 'get'
   devise_for :admins
-  resources :userlocations, :casts
+  resources :userlocations
+  resources :casts do
+    member do
+      post  'create_profile'
+    end
+    collection do
+      delete'destroy_profile'
+    end
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
